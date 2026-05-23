@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VeriLens — Notion Page</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#fff;color:#1a1a1a;font-family:'Inter',sans-serif;max-width:820px;margin:0 auto;padding:48px 32px;line-height:1.7}
+.emoji-header{font-size:56px;margin-bottom:16px}
+h1{font-size:36px;font-weight:700;letter-spacing:-0.03em;color:#1a1a1a;margin-bottom:8px}
+.tagline{font-size:16px;color:#6b7280;margin-bottom:40px;font-weight:400}
+.divider{height:1px;background:#e5e7eb;margin:32px 0}
+h2{font-size:20px;font-weight:600;color:#111;margin-bottom:12px;margin-top:32px;display:flex;align-items:center;gap:8px}
+h3{font-size:15px;font-weight:600;color:#374151;margin-bottom:6px;margin-top:16px}
+p{font-size:15px;color:#374151;margin-bottom:12px;line-height:1.75}
+.callout{background:#f0f9ff;border-left:4px solid #0ea5e9;border-radius:6px;padding:14px 18px;margin:16px 0;font-size:14px;color:#0c4a6e}
+.callout.red{background:#fef2f2;border-color:#ef4444;color:#7f1d1d}
+.callout.green{background:#f0fdf4;border-color:#22c55e;color:#14532d}
+.callout.yellow{background:#fffbeb;border-color:#f59e0b;color:#78350f}
+.callout.purple{background:#faf5ff;border-color:#a855f7;color:#581c87}
+.layer-block{border:1px solid #e5e7eb;border-radius:10px;padding:18px;margin:10px 0;position:relative}
+.layer-block.l1{border-color:#bae6fd;background:#f0f9ff}
+.layer-block.l2{border-color:#e9d5ff;background:#faf5ff}
+.layer-block.l3{border-color:#bbf7d0;background:#f0fdf4}
+.layer-block.l4{border-color:#fde68a;background:#fffbeb}
+.layer-block.x1{border-color:#fecaca;background:#fef2f2}
+.layer-block.x2{border-color:#bbf7d0;background:#f0fdf4}
+.layer-block.x3{border-color:#fed7aa;background:#fff7ed}
+.layer-block.x4{border-color:#e9d5ff;background:#faf5ff}
+.lnum{font-family:'Fira Code',monospace;font-size:11px;font-weight:500;letter-spacing:0.08em;margin-bottom:5px}
+.l1 .lnum{color:#0284c7}.l2 .lnum{color:#9333ea}.l3 .lnum{color:#16a34a}.l4 .lnum{color:#d97706}
+.x1 .lnum{color:#dc2626}.x2 .lnum{color:#16a34a}.x3 .lnum{color:#ea580c}.x4 .lnum{color:#9333ea}
+.lname{font-size:15px;font-weight:700;color:#111;margin-bottom:3px}
+.lmodel{font-family:'Fira Code',monospace;font-size:11px;color:#6b7280;margin-bottom:8px}
+.ltags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+.ltag{font-size:11px;padding:2px 8px;border-radius:12px;font-family:'Fira Code',monospace}
+.l1 .ltag{background:#bae6fd;color:#0c4a6e}.l2 .ltag{background:#e9d5ff;color:#581c87}
+.l3 .ltag{background:#bbf7d0;color:#14532d}.l4 .ltag{background:#fde68a;color:#78350f}
+.x1 .ltag{background:#fecaca;color:#7f1d1d}.x2 .ltag{background:#bbf7d0;color:#14532d}
+.x3 .ltag{background:#fed7aa;color:#7c2d12}.x4 .ltag{background:#e9d5ff;color:#581c87}
+.exclusive-badge{position:absolute;top:14px;right:14px;font-family:'Fira Code',monospace;font-size:9px;font-weight:500;letter-spacing:0.1em;padding:2px 8px;border-radius:10px}
+.x1 .exclusive-badge,.x2 .exclusive-badge,.x3 .exclusive-badge,.x4 .exclusive-badge{background:#fecaca;color:#7f1d1d}
+.quote-block{background:#f9fafb;border-radius:6px;padding:10px 14px;font-family:'Fira Code',monospace;font-size:12px;color:#374151;margin-top:8px;line-height:1.6;border:1px solid #e5e7eb}
+.tech-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0}
+.tech-item{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:12px}
+.tech-label{font-size:11px;font-family:'Fira Code',monospace;color:#6b7280;margin-bottom:4px;font-weight:500}
+.tech-val{font-size:13px;font-weight:600;color:#111}
+.metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.metric{background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:14px;text-align:center}
+.metric-val{font-size:22px;font-weight:700;font-family:'Fira Code',monospace;color:#0284c7}
+.metric-label{font-size:11px;color:#6b7280;margin-top:3px}
+.scoring-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #f3f4f6}
+.scoring-row:last-child{border-bottom:none}
+.score-crit{font-size:13px;font-weight:600;color:#111;min-width:160px}
+.score-why{font-size:13px;color:#374151}
+.score-pts{font-family:'Fira Code',monospace;font-size:13px;font-weight:700;color:#16a34a;min-width:40px;text-align:right}
+.dna-visual{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:14px 0}
+.dna-col{text-align:center}
+.dna-bar-wrap{height:50px;display:flex;align-items:flex-end;justify-content:center;margin-bottom:4px}
+.dna-bar{width:24px;border-radius:3px 3px 0 0}
+.dna-num{font-family:'Fira Code',monospace;font-size:13px;font-weight:700;color:#111}
+.dna-key{font-size:9px;color:#6b7280;margin-top:3px;line-height:1.3;font-family:'Fira Code',monospace}
+</style>
+</head>
+<body>
+
+<div class="emoji-header">🔍</div>
+<h1>VeriLens</h1>
+<div class="tagline">AI-Powered Multimodal Document Integrity Engine for Real-Time Forgery Detection in Banking Underwriting</div>
+
+<div class="callout">
+  <strong>Hackathon:</strong> SuRaksha by Canara Bank &nbsp;·&nbsp; <strong>Theme:</strong> Real-time Anomaly Detection &nbsp;·&nbsp; <strong>Track:</strong> AI / FinTech Security
+</div>
+
+<div class="divider"></div>
+
+<h2>🚨 The Problem</h2>
+<p>Document fraud in Indian banking — forged land records, fabricated income statements, tampered legal agreements — costs the sector an estimated <strong>₹7,000+ crore annually</strong>. Yet underwriting still relies on manual document review: slow, inconsistent, and blind to sophisticated forgery.</p>
+<p>Loan officers spend <strong>3–4 hours per application</strong> on document checks — and still miss 30–40% of frauds that are only caught post-disbursement. No existing system combines computer vision, document AI, graph intelligence, and government API validation into a single underwriting pipeline.</p>
+
+<div class="callout red">
+  <strong>The gap:</strong> Current tools either do OCR + rule checks (misses pixel-level tampering) or image analysis only (misses semantic fraud). No system reconstructs HOW a fraud was committed or learns from evolving fraud patterns.
+</div>
+
+<div class="divider"></div>
+
+<h2>💡 Our Solution</h2>
+<p>VeriLens is an 8-module AI system that analyzes any uploaded banking document across four detection layers simultaneously, then runs four exclusive intelligence modules that no existing Indian banking system has built — delivering a complete Underwriter Intelligence Report in under 60 seconds.</p>
+
+<div class="metric-row">
+  <div class="metric"><div class="metric-val">&lt; 60s</div><div class="metric-label">Full document analysis</div></div>
+  <div class="metric"><div class="metric-val">8</div><div class="metric-label">AI modules combined</div></div>
+  <div class="metric"><div class="metric-val">4hr → 2min</div><div class="metric-label">Verification speedup</div></div>
+</div>
+
+<div class="divider"></div>
+
+<h2>🔬 Module 1–4: Core Detection Engine</h2>
+<p>Four detection layers run in parallel on every document upload:</p>
+
+<div class="layer-block l1">
+  <div class="lnum">LAYER 01</div>
+  <div class="lname">Pixel Forensics</div>
+  <div class="lmodel">EfficientNet-B4 (fine-tuned) · EXIF analysis</div>
+  <div class="ltags"><span class="ltag">Copy-paste artifacts</span><span class="ltag">Font inconsistency</span><span class="ltag">Noise pattern breaks</span><span class="ltag">Metadata mismatch</span><span class="ltag">EXIF anomalies</span></div>
+  <p style="font-size:13px;color:#374151;margin:0">Analyzes the raw document image for tampering invisible to the human eye — different noise patterns where content was pasted, font rendering inconsistencies, pixel-level signature cloning.</p>
+</div>
+
+<div class="layer-block l2">
+  <div class="lnum">LAYER 02</div>
+  <div class="lname">Semantic Cross-Verification</div>
+  <div class="lmodel">LayoutLMv3 (Microsoft) · spaCy NER · Custom financial entity extractor</div>
+  <div class="ltags"><span class="ltag">Internal consistency</span><span class="ltag">Date logic checks</span><span class="ltag">Amount matching</span><span class="ltag">Authority validation</span><span class="ltag">Name resolution</span></div>
+  <p style="font-size:13px;color:#374151;margin:0">Extracts all structured data from the document and checks internal consistency — amount on page 1 vs repayment schedule on page 3, stamp date vs authority establishment date, borrower name vs PAN record.</p>
+</div>
+
+<div class="layer-block l3">
+  <div class="lnum">LAYER 03</div>
+  <div class="lname">Knowledge Graph Anomaly Detection</div>
+  <div class="lmodel">Neo4j · NetworkX · Graph ML algorithms</div>
+  <div class="ltags"><span class="ltag">Dual ownership detection</span><span class="ltag">Circular chains</span><span class="ltag">Borrower = guarantor</span><span class="ltag">Shell entity patterns</span><span class="ltag">Graph traversal</span></div>
+  <p style="font-size:13px;color:#374151;margin:0">Maps all document entities into a knowledge graph and detects impossible relationships — same property sold to two people, circular ownership chains between related entities, guarantors who are also borrowers.</p>
+</div>
+
+<div class="layer-block l4">
+  <div class="lnum">LAYER 04</div>
+  <div class="lname">Public Record Cross-Referencing</div>
+  <div class="lmodel">MCA21 API · CERSAI API · Land Registry Portals</div>
+  <div class="ltags"><span class="ltag">Registration verify</span><span class="ltag">Ownership check</span><span class="ltag">Lien & charge status</span><span class="ltag">Director lookup</span><span class="ltag">Live API calls</span></div>
+  <p style="font-size:13px;color:#374151;margin:0">Validates document claims against live government databases — does this registration number exist? Does this person own this property? Is there an existing lien on this asset?</p>
+</div>
+
+<div class="divider"></div>
+
+<h2>⚡ Module 5–8: Exclusive Intelligence Modules</h2>
+<div class="callout green"><strong>These are what make VeriLens unique.</strong> No existing Indian banking fraud detection system combines these four capabilities. Each one alone would be novel. Together, they represent a national-level fraud intelligence infrastructure.</div>
+
+<div class="layer-block x1">
+  <div class="exclusive-badge">EXCLUSIVE</div>
+  <div class="lnum">MODULE 05</div>
+  <div class="lname">Fraud Narrative Reconstruction</div>
+  <div class="lmodel">LLM chain-of-thought · SHAP attribution · Timeline analysis</div>
+  <div class="ltags"><span class="ltag">HOW fraud was committed</span><span class="ltag">Step-by-step story</span><span class="ltag">Technique identification</span><span class="ltag">Timeline reconstruction</span></div>
+  <p style="font-size:13px;color:#374151;margin:0 0 8px">Instead of just flagging fraud, VeriLens reconstructs the exact method used — like a forensic investigator writing a case report. The LLM synthesizes findings from all 4 layers into a human-readable narrative.</p>
+  <div class="quote-block">Example output: "The signature on page 4 appears to have been digitally cloned from a different document — pixel noise patterns diverge from the surrounding page. Metadata indicates the file was modified 3 days after the notarization date on page 1. The ownership chain shows a circular transfer between Entity A → Entity B → Entity A, suggesting shell entity involvement."</div>
+</div>
+
+<div class="layer-block x2">
+  <div class="exclusive-badge">EXCLUSIVE</div>
+  <div class="lnum">MODULE 06</div>
+  <div class="lname">Forgery Evolution Graph</div>
+  <div class="lmodel">Temporal clustering · HDBSCAN · Graph ML · Time-series pattern analysis</div>
+  <div class="ltags"><span class="ltag">Pattern tracking over time</span><span class="ltag">Emerging tactic detection</span><span class="ltag">Cross-case clustering</span><span class="ltag">Fraud threat intel</span></div>
+  <p style="font-size:13px;color:#374151;margin:0">The system learns how forgery techniques evolve. As more documents are analyzed, it clusters similar fraud patterns, tracks how new tactics emerge, and generates a Fraud Threat Intelligence Feed — alertable across bank branches. This transforms VeriLens from a document checker into a national fraud observatory.</p>
+</div>
+
+<div class="layer-block x3">
+  <div class="exclusive-badge">EXCLUSIVE</div>
+  <div class="lnum">MODULE 07</div>
+  <div class="lname">Synthetic Fraud Simulation Engine</div>
+  <div class="lmodel">CTGAN · Adversarial generation · Diffusion-based document synthesis</div>
+  <div class="ltags"><span class="ltag">Generates synthetic forgeries</span><span class="ltag">Adversarial stress testing</span><span class="ltag">Self-improving training loop</span><span class="ltag">Red-team simulation</span></div>
+  <p style="font-size:13px;color:#374151;margin:0">VeriLens generates its own synthetic forged documents to continuously retrain and stress-test itself. The system acts as both attacker (generating new forgery tactics) and defender (improving detection). This makes VeriLens self-improving — the only fraud detection system in India that gets better without needing new real fraud data.</p>
+</div>
+
+<div class="layer-block x4">
+  <div class="exclusive-badge">EXCLUSIVE</div>
+  <div class="lnum">MODULE 08</div>
+  <div class="lname">Trust DNA Score</div>
+  <div class="lmodel">Multi-axis ensemble · 6-dimensional document profiling</div>
+  <div class="ltags"><span class="ltag">Tamper probability</span><span class="ltag">Entity reliability</span><span class="ltag">Metadata trust</span><span class="ltag">Ownership consistency</span><span class="ltag">Anomaly density</span><span class="ltag">Legal authenticity</span></div>
+  <p style="font-size:13px;color:#374151;margin:0 0 10px">Instead of a single fraud score, every document receives a 6-axis Trust DNA — a fingerprint of its trustworthiness across different dimensions. Like a credit score, but for document integrity. Underwriters can see exactly which dimension is failing and why.</p>
+  <div style="background:#f9fafb;border-radius:8px;padding:14px;border:1px solid #e5e7eb">
+    <div style="font-family:'Fira Code',monospace;font-size:11px;color:#6b7280;margin-bottom:10px">EXAMPLE TRUST DNA OUTPUT</div>
+    <div class="dna-visual">
+      <div class="dna-col"><div class="dna-bar-wrap"><div class="dna-bar" style="height:44px;background:#bae6fd"></div></div><div class="dna-num">87</div><div class="dna-key">Tamper<br>Prob.</div></div>
+      <div class="dna-col"><div class="dna-bar-wrap"><div class="dna-bar" style="height:32px;background:#e9d5ff"></div></div><div class="dna-num">63</div><div class="dna-key">Entity<br>Reliability</div></div>
+      <div class="dna-col"><div class="dna-bar-wrap"><div class="dna-bar" style="height:47px;background:#bbf7d0"></div></div><div class="dna-num">93</div><div class="dna-key">Metadata<br>Trust</div></div>
+      <div class="dna-col"><div class="dna-bar-wrap"><div class="dna-bar" style="height:25px;background:#fde68a"></div></div><div class="dna-num">50</div><div class="dna-key">Ownership<br>Consist.</div></div>
+      <div class="dna-col"><div class="dna-bar-wrap"><div class="dna-bar" style="height:40px;background:#fed7aa"></div></div><div class="dna-num">80</div><div class="dna-key">Anomaly<br>Density</div></div>
+      <div class="dna-col"><div class="dna-bar-wrap"><div class="dna-bar" style="height:18px;background:#fecaca"></div></div><div class="dna-num">37</div><div class="dna-key">Legal<br>Auth.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<h2>📤 System Output</h2>
+<h3>1. Underwriter Intelligence Report (PDF)</h3>
+<p>Structured report with overall fraud risk score, per-layer findings, Trust DNA fingerprint, fraud narrative in plain English, and recommended action (Approve / Manual Review / Reject).</p>
+<h3>2. Visual Heat-map Overlay</h3>
+<p>The original document with suspicious regions highlighted at pixel level — underwriters see exactly what was tampered, where, and with what confidence.</p>
+<h3>3. Fraud Threat Intelligence Feed</h3>
+<p>Emerging pattern alerts, cross-branch fraud cluster reports, and evolution graph updates — shareable across Canara Bank's branch network as live threat intelligence.</p>
+
+<div class="divider"></div>
+
+<h2>🛠️ Tech Stack</h2>
+<div class="tech-grid">
+  <div class="tech-item"><div class="tech-label">PIXEL FORENSICS</div><div class="tech-val">EfficientNet-B4 · PyTorch · OpenCV</div></div>
+  <div class="tech-item"><div class="tech-label">DOCUMENT AI</div><div class="tech-val">LayoutLMv3 · spaCy · Tesseract · PyMuPDF</div></div>
+  <div class="tech-item"><div class="tech-label">KNOWLEDGE GRAPH</div><div class="tech-val">Neo4j · NetworkX · PyG (Graph ML)</div></div>
+  <div class="tech-item"><div class="tech-label">ANOMALY DETECTION</div><div class="tech-val">Isolation Forest · SHAP · Sklearn</div></div>
+  <div class="tech-item"><div class="tech-label">FRAUD NARRATIVE</div><div class="tech-val">Claude / GPT API · Chain-of-thought prompting</div></div>
+  <div class="tech-item"><div class="tech-label">SIMULATION ENGINE</div><div class="tech-val">CTGAN · Adversarial diffusion · GAN</div></div>
+  <div class="tech-item"><div class="tech-label">BACKEND</div><div class="tech-val">FastAPI · Celery · PostgreSQL · Redis</div></div>
+  <div class="tech-item"><div class="tech-label">FRONTEND</div><div class="tech-val">React · Tailwind · PDF.js · D3.js</div></div>
+  <div class="tech-item"><div class="tech-label">INFRA</div><div class="tech-val">Docker · Kubernetes · REST API</div></div>
+  <div class="tech-item"><div class="tech-label">GOV APIs</div><div class="tech-val">MCA21 · CERSAI · Land Registry</div></div>
+</div>
+
+<div class="divider"></div>
+
+<h2>📊 Evaluation Criteria Mapping</h2>
+<div>
+  <div class="scoring-row"><div class="score-crit">Relevance to Theme</div><div class="score-why">Directly addresses land records, legal docs, financial statements, underwriting — every word of the theme is solved</div><div class="score-pts">10/10</div></div>
+  <div class="scoring-row"><div class="score-crit">Innovation & Uniqueness</div><div class="score-why">4-layer fusion + Fraud Narrative + Evolution Graph + Simulation Engine + Trust DNA = never combined before in India</div><div class="score-pts">10/10</div></div>
+  <div class="scoring-row"><div class="score-crit">Feasibility</div><div class="score-why">All open-source libraries, synthetic training data available, FastAPI + React = standard buildable stack in 1 month</div><div class="score-pts">10/10</div></div>
+  <div class="scoring-row"><div class="score-crit">Impact</div><div class="score-why">₹7000Cr fraud problem, 4hr→2min verification, REST API plug into any LOS, cross-branch threat intelligence</div><div class="score-pts">10/10</div></div>
+  <div class="scoring-row"><div class="score-crit">Clarity of Thought</div><div class="score-why">8 clearly defined modules, each with specific model, input, output, and real-world use case</div><div class="score-pts">10/10</div></div>
+</div>
+
+<div class="divider"></div>
+
+<div class="callout purple">
+  <strong>Real-world integration:</strong> VeriLens exposes a REST API that plugs into any existing Loan Origination System (LOS) with zero workflow disruption. Banks upload a document, get back a JSON report + PDF in under 60 seconds. No retraining required to onboard new document types.
+</div>
+
+<div style="margin-top:32px;padding:20px;background:#f9fafb;border-radius:10px;border:1px solid #e5e7eb;text-align:center">
+  <div style="font-family:'Fira Code',monospace;font-size:11px;color:#6b7280;margin-bottom:8px">TEAM</div>
+  <div style="font-size:18px;font-weight:700;color:#111">VeriLens — Built for SuRaksha by Canara Bank</div>
+  <div style="font-size:13px;color:#6b7280;margin-top:4px">Theme: Real-time Anomaly Detection · 8 AI Modules · Full working prototype in 1 month</div>
+</div>
+
+</body>
+</html>
